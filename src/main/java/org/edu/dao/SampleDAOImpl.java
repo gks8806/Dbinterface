@@ -7,32 +7,32 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.edu.vo.MemberVO;
 
-public class SampleMapperImpl implements IF_SampleMapper{
+public class SampleDAOImpl implements IF_SampleDAO{
 	
 	@Inject
 	private SqlSession sqlSession;
 	//오버라이드-다형성(IF의 insertMember의 다형성)
 	@Override
 	public void insertMember(MemberVO vo) {
-		sqlSession.insert("org.edu.dao.IF_SampleMapper", vo);
+		sqlSession.insert("org.edu.dao.IF_SampleDAO", vo);
 		
 	}
 
 	@Override
 	public List<MemberVO> selectMember() {
 		
-		return sqlSession.selectList("org.edu.dao.IF_SampleMapper");
+		return sqlSession.selectList("org.edu.dao.IF_SampleDAO");
 	}
 
 	@Override
 	public void updateMember(MemberVO vo) {
-		sqlSession.update("org.edu.dao.IF_SampleMapper", vo);
+		sqlSession.update("org.edu.dao.IF_SampleDAO", vo);
 		
 	}
 
 	@Override
 	public void deleteMember(String userid) {
-		sqlSession.delete("org.edu.dao.IF_SampleMapper", userid);
+		sqlSession.delete("org.edu.dao.IF_SampleDAO", userid);
 		
 	}
 
