@@ -9,33 +9,31 @@ import org.edu.vo.MemberVO;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class SampleDAOImpl implements IF_SampleDAO{
+public class SampleDAOImpl implements IF_SampleDAO {
+	
+	private static String mapperQuery = "org.edu.dao.IF_SampleDAO";
 	
 	@Inject
 	private SqlSession sqlSession;
-	//오버라이드-다형성(IF의 insertMember의 다형성)
+	//오바라이드-다형성
 	@Override
 	public void insertMember(MemberVO vo) {
-		sqlSession.insert("org.edu.dao.IF_SampleDAO", vo);
-		
+		sqlSession.insert(mapperQuery + ".insertMember", vo);		
 	}
 
 	@Override
 	public List<MemberVO> selectMember() {
-		
-		return sqlSession.selectList("org.edu.dao.IF_SampleDAO");
+		return sqlSession.selectList(mapperQuery + ".selectMember");
 	}
 
 	@Override
 	public void updateMember(MemberVO vo) {
-		sqlSession.update("org.edu.dao.IF_SampleDAO", vo);
-		
+		sqlSession.update(mapperQuery + ".updateMember", vo);		
 	}
 
 	@Override
 	public void deleteMember(String userid) {
-		sqlSession.delete("org.edu.dao.IF_SampleDAO", userid);
-		
+		sqlSession.delete(mapperQuery + ".deleteMember", userid);		
 	}
 
 	@Override
